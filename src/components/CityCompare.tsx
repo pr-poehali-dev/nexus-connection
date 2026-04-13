@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import Icon from "@/components/ui/icon";
 import WeatherCard from "@/components/WeatherCard";
-import { WeatherData, getWeatherInfo, loadWeather } from "@/components/Hero";
+import { WeatherData, getWeatherInfo, fetchWeatherData } from "@/lib/weather";
 
 interface GeoResult {
   name: string;
@@ -48,7 +48,7 @@ export default function CityCompare({ initialCity }: Props) {
     if (cities.find((c) => c.city === geo.name)) return;
     setAddingLoading(true);
     try {
-      const w = await loadWeather(geo.name, geo.latitude, geo.longitude);
+      const w = await fetchWeatherData(geo.name, geo.latitude, geo.longitude);
       setCities((prev) => [...prev, w]);
     } finally {
       setAddingLoading(false);

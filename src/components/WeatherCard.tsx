@@ -1,5 +1,5 @@
 import Icon from "@/components/ui/icon";
-import { WeatherData, getWeatherInfo } from "@/components/Hero";
+import { WeatherData, getWeatherInfo } from "@/lib/weather";
 
 interface Props {
   weather: WeatherData;
